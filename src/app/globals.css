@@ -5,7 +5,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -46,75 +46,363 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --baxus-background: #f8f6f1;
+  --baxus-primary: #1d6d72;
+  --baxus-footer: #222222;
+}
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    /* BAXUS-inspired light mode with updated colors */
+    --background: 36 20% 96%; /* #F8F6F1 - Cream/beige background */
+    --foreground: 220 15% 15%; /* Dark text for readability */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
- 
+    --card: 0 0% 100%; /* Pure white cards */
+    --card-foreground: 220 15% 15%;
+
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
- 
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
- 
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
- 
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
- 
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --popover-foreground: 220 15% 15%;
 
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
- 
-    --radius: 0.5rem;
+    --primary: 182 58% 28%; /* #1D6D72 - Teal primary color */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 36 20% 94%; /* Subtle beige for secondary */
+    --secondary-foreground: 220 15% 20%;
+
+    --muted: 36 15% 90%;
+    --muted-foreground: 220 15% 40%;
+
+    --accent: 182 58% 28%; /* Teal accent */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 36 15% 88%;
+    --input: 36 15% 88%;
+    --ring: 182 58% 28%;
+
+    --radius: 0.4rem;
   }
- 
+
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
- 
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
- 
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
- 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
- 
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
- 
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
- 
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
- 
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    /* BAXUS-inspired dark mode with updated colors */
+    --background: 220 10% 13%;
+    --foreground: 36 15% 94%;
+
+    --card: 220 10% 17%;
+    --card-foreground: 36 15% 94%;
+
+    --popover: 220 10% 17%;
+    --popover-foreground: 36 15% 94%;
+
+    --primary: 182 45% 40%; /* Brighter teal for dark mode */
+    --primary-foreground: 220 10% 13%;
+
+    --secondary: 220 10% 20%;
+    --secondary-foreground: 36 15% 94%;
+
+    --muted: 220 10% 22%;
+    --muted-foreground: 36 10% 80%;
+
+    --accent: 182 45% 40%;
+    --accent-foreground: 220 10% 13%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 36 15% 94%;
+
+    --border: 220 10% 25%;
+    --input: 220 10% 25%;
+    --ring: 182 45% 40%;
   }
+}
+
+/* Force applying background color only in light mode */
+html:not(.dark),
+body:not(.dark) {
+  background-color: #f8f6f1 !important;
+  color: #222 !important;
+}
+
+/* Dark mode background and text color */
+html.dark,
+body.dark {
+  background-color: hsl(220 10% 13%) !important;
+  color: hsl(36 15% 94%) !important;
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  .dark body {
+    background-image: linear-gradient(
+      to bottom,
+      hsl(var(--background)),
+      hsl(220 10% 10%)
+    );
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/50;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-primary/90 hover:bg-primary transition-colors;
+  }
+
+  /* Shine effect for badges and elements */
+  .shine-effect {
+    animation: shine 2.5s linear infinite;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    transform: skewX(-20deg);
+  }
+
+  /* Luxury gradient backgrounds */
+  .bg-luxury-gold {
+    @apply bg-gradient-to-r from-primary via-primary/90 to-primary;
+  }
+
+  .bg-luxury-dark {
+    @apply bg-gradient-to-b from-[#222222] to-[#2a2a2a];
+  }
+
+  /* BAXUS-inspired colors */
+  .text-baxus-primary {
+    @apply text-primary dark:text-primary/90;
+  }
+
+  .text-baxus-dark {
+    @apply text-neutral-900 dark:text-white/90;
+  }
+
+  .border-baxus-primary {
+    @apply border-primary/40;
+  }
+
+  /* Glass card styling */
+  .glass-card {
+    @apply backdrop-blur-sm border border-primary/10 bg-white shadow-sm;
+  }
+
+  .dark .glass-card {
+    @apply bg-card/80 border-white/10 backdrop-blur-sm;
+  }
+
+  /* Typography enhancements */
+  .font-heading {
+    @apply tracking-tight font-medium;
+  }
+
+  /* Dark mode text fixes */
+  .dark p,
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6,
+  .dark span:not(.text-primary):not(.text-muted-foreground) {
+    @apply text-foreground;
+  }
+
+  /* Feature card specific fixes */
+  .dark .glass-card p {
+    @apply text-foreground;
+  }
+
+  .dark .glass-card h3 {
+    @apply text-primary;
+  }
+
+  /* Link styling */
+  a {
+    @apply text-primary hover:text-primary/80 transition-colors duration-200;
+  }
+
+  .dark a {
+    @apply text-primary hover:text-primary/90;
+  }
+
+  /* Ensure links with buttons styling don't get overridden */
+  a.btn-baxus, 
+  button a {
+    @apply text-primary-foreground hover:text-primary-foreground/90;
+  }
+}
+
+/* Global Dark Mode Styles */
+.dark {
+  color-scheme: dark;
+
+  /* Card Styles */
+  .glass-card {
+    @apply backdrop-blur-sm border border-white/10 bg-card/80;
+  }
+
+  /* Custom component classes */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-foreground;
+  }
+
+  p,
+  span,
+  div:not([class*="bg-"]) {
+    @apply text-foreground;
+  }
+
+  /* Feature card styles */
+  .glass-card p {
+    @apply text-foreground;
+  }
+
+  .glass-card h3 {
+    @apply text-primary;
+  }
+
+  /* Input field styles */
+  input,
+  textarea,
+  select {
+    @apply bg-card border-primary/20;
+  }
+
+  /* Button styles for better visibility */
+  button[type="submit"],
+  button[type="button"] {
+    @apply text-primary-foreground border-primary/20;
+  }
+}
+
+/* Typography enhancements - applied to all modes */
+.font-heading {
+  @apply tracking-tight font-medium;
+}
+
+/* BAXUS-specific button styling */
+.btn-baxus {
+  @apply bg-primary hover:bg-primary/90 text-primary-foreground border border-primary/20 transition-all duration-200;
+}
+
+.btn-baxus-outline {
+  @apply bg-transparent hover:bg-primary/10 text-primary border border-primary/50 transition-all duration-200;
+}
+
+/* Direct styling for common components */
+.card {
+  @apply bg-card border-primary/10 shadow-sm;
+}
+
+.badge {
+  @apply bg-primary text-primary-foreground;
+}
+
+/* Container overrides for better mobile experience */
+.container {
+  @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl;
+}
+
+/* Center layout */
+.container,
+.mx-auto,
+main > section {
+  @apply mx-auto;
+}
+
+main > section > div {
+  @apply mx-auto;
+}
+
+/* Footer-specific styles */
+footer {
+  @apply bg-[#222222] text-white border-t-0;
+}
+
+.dark footer {
+  @apply bg-[#222222];
+}
+
+footer .text-foreground,
+footer .text-muted-foreground,
+footer h3 {
+  @apply text-white/90;
+}
+
+footer a {
+  @apply text-white/90 hover:text-primary transition-colors duration-200;
+}
+
+/* Override ShadCN UI components with explicit colors */
+.Button {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+.Card {
+  @apply bg-card border-primary/10;
+}
+
+.Badge {
+  @apply bg-primary text-primary-foreground;
+}
+
+/* Responsive styles */
+@media (max-width: 640px) {
+  h1 {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  h2 {
+    @apply text-xl sm:text-2xl;
+  }
+
+  h3 {
+    @apply text-base sm:text-lg;
+  }
+
+  p {
+    @apply text-sm sm:text-base;
+  }
+
+  .glass-card {
+    @apply p-3 sm:p-4;
+  }
+
+  /* Tighter spacing on mobile */
+  .space-y-6 {
+    @apply space-y-4 sm:space-y-6;
+  }
+
+  .gap-6 {
+    @apply gap-3 sm:gap-6;
+  }
+
+  /* Better grid layout on small screens */
+  .grid {
+    @apply gap-3 sm:gap-4 md:gap-6;
   }
 }
