@@ -11,15 +11,16 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
+const baseUrl =
+  process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_VERCEL_URL
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+    : 'http://localhost:3000';
+
 export const metadata: Metadata = {
   title: 'BAXUS - Meet Bob, Your Whisky Expert',
   description:
     'BAXUS AI Agent Bob analyzes your whisky collection and provides personalized recommendations',
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_VERCEL_URL
-      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-      : process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
-  ),
+  metadataBase: new URL(baseUrl),
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     siteName: 'BAXUS',
     images: [
       {
-        url: '/baxus-bob-og.png',
+        url: `${baseUrl}/baxus-bob-og.png`,
         width: 1200,
         height: 630,
         alt: 'BAXUS - Meet Bob, Your Whisky Expert',
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     title: 'BAXUS - Meet Bob, Your Whisky Expert',
     description:
       'BAXUS AI Agent Bob analyzes your whisky collection and provides personalized recommendations',
-    images: ['/baxus-bob-og.png'],
+    images: [`${baseUrl}/baxus-bob-og.png`],
   },
 };
 

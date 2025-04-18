@@ -19,6 +19,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { username } = await params;
 
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_VERCEL_URL
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+      : 'http://localhost:3000';
+
   try {
     // Fetch user bar data
     const userData = await fetchUserBar(username);
@@ -51,7 +56,7 @@ export async function generateMetadata({
                   alt: `${username}'s top whisky recommendation`,
                 },
               ]
-            : ['/baxus-bob-og.png'],
+            : [`${baseUrl}/baxus-bob-og.png`],
         },
         twitter: {
           card: 'summary_large_image',
@@ -59,7 +64,7 @@ export async function generateMetadata({
           description,
           images: topBottleImageUrl
             ? [topBottleImageUrl]
-            : ['/baxus-bob-og.png'],
+            : [`${baseUrl}/baxus-bob-og.png`],
         },
       };
     }

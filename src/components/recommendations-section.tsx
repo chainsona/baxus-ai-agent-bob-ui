@@ -21,9 +21,10 @@ interface RecommendationsSectionProps {
  * Share content to X (Twitter)
  */
 function shareToX(bottleName: string, bottleType: string, pathname: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-    : process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_VERCEL_URL
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+      : 'http://localhost:3000';
 
   const text = `Check out my top spirits recommendations by @BAXUSco Bob, whisky AI expert. Powered by @TheMaikers ${baseUrl}${pathname}`;
   const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
