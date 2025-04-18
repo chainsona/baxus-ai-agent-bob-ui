@@ -1,20 +1,49 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-import type { Metadata } from "next";
-import SiteHeader from "@/components/site-header";
-import SiteFooter from "@/components/site-footer";
-import ThemeProvider from "@/components/theme-provider";
+import './globals.css';
+import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
+import SiteHeader from '@/components/site-header';
+import SiteFooter from '@/components/site-footer';
+import ThemeProvider from '@/components/theme-provider';
 
 const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
-  title: "BAXUS - Meet Bob, Your Whisky Expert",
+  title: 'BAXUS - Meet Bob, Your Whisky Expert',
   description:
-    "BAXUS AI Agent Bob analyzes your whisky collection and provides personalized recommendations",
+    'BAXUS AI Agent Bob analyzes your whisky collection and provides personalized recommendations',
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_VERCEL_URL
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+  ),
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: '/',
+    title: 'BAXUS - Meet Bob, Your Whisky Expert',
+    description:
+      'BAXUS AI Agent Bob analyzes your whisky collection and provides personalized recommendations',
+    siteName: 'BAXUS',
+    images: [
+      {
+        url: '/baxus-bob-og.png',
+        width: 1200,
+        height: 630,
+        alt: 'BAXUS - Meet Bob, Your Whisky Expert',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'BAXUS - Meet Bob, Your Whisky Expert',
+    description:
+      'BAXUS AI Agent Bob analyzes your whisky collection and provides personalized recommendations',
+    images: ['/baxus-bob-og.png'],
+  },
 };
 
 export default function RootLayout({

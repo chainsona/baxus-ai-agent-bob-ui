@@ -1,19 +1,17 @@
-import { Recommendation } from "@/lib/recommendation-engine";
-import { BottleCard } from "@/components/bottle-card";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Recommendation } from '@/lib/recommendation-engine';
+import { Card } from '@/components/ui/card';
 import {
   Award,
   ChevronRight,
   Share,
   Percent,
   DollarSign,
-  Star,
   ArrowRight,
   Trophy,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { usePathname } from "next/navigation";
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { usePathname } from 'next/navigation';
 
 interface RecommendationsSectionProps {
   recommendations: Recommendation[];
@@ -25,11 +23,11 @@ interface RecommendationsSectionProps {
 function shareToX(bottleName: string, bottleType: string, pathname: string) {
   const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
     ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-    : process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+    : process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
-  const text = `Check out my top spirits recommendations by @BAXUSco Bob, whisky AI expert. ${baseUrl}${pathname}`;
+  const text = `Check out my top spirits recommendations by @BAXUSco Bob, whisky AI expert. Powered by @TheMaikers ${baseUrl}${pathname}`;
   const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
-  window.open(url, "_blank", "noopener,noreferrer");
+  window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 export function RecommendationsSection({
@@ -53,7 +51,7 @@ export function RecommendationsSection({
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold tracking-tight text-[#222222] flex items-center gap-2">
           <Award className="h-6 w-6 text-[#1D6D72]" />
-          Bob's Top Recommendations
+          Bob&apos;s Top Recommendations
         </h2>
       </div>
 
@@ -88,7 +86,7 @@ export function RecommendationsSection({
               <div className="flex flex-col">
                 <span className="text-sm text-neutral-600">Listed Price</span>
                 <span className="text-3xl font-bold text-[#222222]">
-                  ${bottle.avg_msrp?.toFixed(0) || "--"}
+                  ${bottle.avg_msrp?.toFixed(0) || '--'}
                 </span>
               </div>
             </div>
@@ -117,10 +115,6 @@ export function RecommendationsSection({
                 )}
               </div>
 
-              <Button className="w-full bg-[#1D6D72] hover:bg-[#1D6D72]/90 text-white mb-8">
-                View Details
-              </Button>
-
               <div className="mb-6">
                 <p className="text-[#222222] line-clamp-4">
                   {featuredRecommendation.reason ||
@@ -137,7 +131,7 @@ export function RecommendationsSection({
                 <div className="space-y-1">
                   <dt className="text-sm text-neutral-600">Producer</dt>
                   <dd className="text-[#222222] font-medium">
-                    {bottle.brand_id ? `Brand #${bottle.brand_id}` : "Unknown"}
+                    {bottle.brand_id ? `Brand #${bottle.brand_id}` : 'Unknown'}
                   </dd>
                 </div>
 
@@ -356,32 +350,32 @@ function parseReasonIntoPoints(reason: string): string[] {
   const points: string[] = [];
 
   // Check for typical phrases in the recommendation text
-  if (reason.includes("matches your preference")) {
-    points.push("Matches your taste preferences");
+  if (reason.includes('matches your preference')) {
+    points.push('Matches your taste preferences');
   }
 
-  if (reason.includes("would add variety")) {
-    points.push("Adds variety to your collection");
+  if (reason.includes('would add variety')) {
+    points.push('Adds variety to your collection');
   }
 
-  if (reason.includes("good value")) {
-    points.push("Offers excellent value for money");
+  if (reason.includes('good value')) {
+    points.push('Offers excellent value for money');
   }
 
-  if (reason.includes("premium selection")) {
-    points.push("Premium selection worth the investment");
+  if (reason.includes('premium selection')) {
+    points.push('Premium selection worth the investment');
   }
 
-  if (reason.includes("typical price range")) {
-    points.push("Within your typical price range");
+  if (reason.includes('typical price range')) {
+    points.push('Within your typical price range');
   }
 
-  if (reason.includes("highly rated") || reason.includes("ranked #")) {
-    points.push("Highly rated among whisky enthusiasts");
+  if (reason.includes('highly rated') || reason.includes('ranked #')) {
+    points.push('Highly rated among whisky enthusiasts');
   }
 
-  if (reason.includes("popular among")) {
-    points.push("Popular among BAXUS users");
+  if (reason.includes('popular among')) {
+    points.push('Popular among BAXUS users');
   }
 
   // If we couldn't extract specific points, use the whole reason as one point

@@ -1,8 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { bottles } from '@/lib/baxus';
-import { Bottle } from '@/lib/api';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Return the bottles directly from the baxus.ts file
     return NextResponse.json(bottles);
@@ -13,4 +12,4 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
-} 
+}

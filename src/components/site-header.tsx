@@ -1,44 +1,15 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Moon, Sun } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link';
 
 export default function SiteHeader() {
-  // State to track dark mode
-  const [darkMode, setDarkMode] = useState(false);
-
-  // Handle theme toggle
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    localStorage.setItem("dark-mode", (!darkMode).toString());
-    document.documentElement.classList.toggle("dark", !darkMode);
-  };
-
-  // Initialize dark mode from local storage or system preference
-  useEffect(() => {
-    const savedDarkMode = localStorage.getItem("dark-mode");
-    const systemDarkMode = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    // Use saved preference or system preference
-    const initialDarkMode =
-      savedDarkMode !== null ? savedDarkMode === "true" : systemDarkMode;
-
-    setDarkMode(initialDarkMode);
-    document.documentElement.classList.toggle("dark", initialDarkMode);
-  }, []);
-
   // External links data
   const navLinks = [
-    { href: "https://breakout.maikers.com", label: "MAIKERS BREAKOUT" },
-    { href: "https://baxus.co", label: "Baxus" },
+    { href: 'https://breakout.maikers.com', label: 'MAIKERS BREAKOUT' },
+    { href: 'https://baxus.co', label: 'Baxus' },
     {
-      href: "https://github.com/chainsona/baxus-ai-agent-bob",
-      label: "GitHub",
+      href: 'https://github.com/chainsona/baxus-ai-agent-bob',
+      label: 'GitHub',
     },
   ];
 

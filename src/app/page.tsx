@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { UserSearch } from "@/components/user-search";
-import { BarChart3, Droplet, Award, GlassWater } from "lucide-react";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { UserSearch } from '@/components/user-search';
+import { BarChart3, Droplet, Award, GlassWater } from 'lucide-react';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +17,7 @@ export default function Home() {
       // Redirect to the username page
       router.push(`/${username}`);
     } catch (err) {
-      console.error("Error:", err);
+      console.error('Error:', err);
       setIsLoading(false);
     }
   };
@@ -30,6 +31,16 @@ export default function Home() {
             <h1 className="mb-4 md:mb-6 text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-[#222222]">
               Meet <span className="text-[#1D6D72]">Bob</span>
             </h1>
+            <div className="mb-4 flex justify-center">
+              <Image
+                src="/baxus-bob-pfp.png"
+                alt="Bob, your whisky expert"
+                width={150}
+                height={150}
+                className="rounded-full border-2 border-[#1D6D72]"
+                priority
+              />
+            </div>
             <p className="text-lg sm:text-xl text-neutral-800 px-4 sm:px-0">
               Your personal whisky expert for exquisite recommendations
             </p>
@@ -60,7 +71,9 @@ export default function Home() {
                 description="Understand your preferences based on your collection"
               />
               <FeatureCard
-                icon={<Award className="h-6 w-6 sm:h-8 sm:w-8 text-[#1D6D72]" />}
+                icon={
+                  <Award className="h-6 w-6 sm:h-8 sm:w-8 text-[#1D6D72]" />
+                }
                 title="Premium Recommendations"
                 description="Discover rare bottles perfectly matched to your taste"
               />
