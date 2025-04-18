@@ -11,9 +11,7 @@ Try the Bob AI prototype here: [Bob AI Prototype](https://bob-ai.baxus.co)
 Watch a demonstration of Bob providing personalized recommendations based on real user collections:
 
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=DEMO_VIDEO_ID">
-    <img src="https://img.youtube.com/vi/DEMO_VIDEO_ID/maxresdefault.jpg" alt="Bob AI Demo Video" style="width:600px;">
-  </a>
+    <img src="./screenshot.png" alt="Bob AI Demo Video" style="width:600px;">
 </div>
 
 > **Note:** Replace `DEMO_VIDEO_ID` with the actual YouTube video ID when the demo is published.
@@ -99,10 +97,6 @@ The recommendation engine utilizes a dataset of 501 bottles for making personali
 ├── public/               # Static files
 └── ...config files
 ```
-
-## License
-
-[MIT License](LICENSE)
 
 ## Acknowledgments
 
