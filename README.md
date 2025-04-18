@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🥃 Bob AI - BAXUS Whisky Recommendation Agent
+
+Bob is an AI agent designed for the BAXUS ecosystem that analyzes users' virtual whisky bars to provide personalized bottle recommendations for their wishlists.
+
+## 🚀 Live Prototype
+
+Try the Bob AI prototype here: [Bob AI Prototype](https://bob-ai.baxus.co)
+
+## 📺 Demo Video
+
+Watch a demonstration of Bob providing personalized recommendations based on real user collections:
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=DEMO_VIDEO_ID">
+    <img src="https://img.youtube.com/vi/DEMO_VIDEO_ID/maxresdefault.jpg" alt="Bob AI Demo Video" style="width:600px;">
+  </a>
+</div>
+
+> **Note:** Replace `DEMO_VIDEO_ID` with the actual YouTube video ID when the demo is published.
+
+## Features
+
+- 🔍 **Collection Analysis**: Analyzes existing bar data to identify patterns in user preferences (styles, price points, etc.)
+- 🧠 **Smart Recommendations**: Suggests new bottles based on your collection profile
+- 💰 **Price-Aware**: Provides recommendations within similar price ranges to match your spending habits
+- 🌟 **Complementary Selections**: Recommends bottles that both match and diversify your collection
+
+## Tech Stack
+
+- 🔄 Next.js 15 - React framework
+- 🎨 Tailwind CSS - Styling
+- 🧩 shadcn/ui - UI components
+- 🤖 Langchain - AI recommendation engine
+- 📊 CSV parsing - For bottle dataset management
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18+ (or as required by Next.js 15)
+- pnpm (preferred package manager)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/MaikersHQ/baxus-ai-agent-bob.git
+   cd baxus-ai-agent-bob
+   ```
+
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
+3. Run the development server:
+   ```bash
+   pnpm dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) to view the app
+
+## Usage
+
+1. Enter a valid BAXUS username in the search box
+2. Bob will analyze the user's bar collection
+3. View the profile analysis showing preferences and patterns
+4. Browse personalized bottle recommendations with explanations
+
+## API Integration
+
+Bob integrates with the BAXUS API to fetch user bar data:
+
+```
+GET http://services.baxus.co/api/bar/user/{username}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Data Sources
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The recommendation engine utilizes a dataset of 501 bottles for making personalized suggestions. This dataset is loaded from a CSV file included in the project at `data/501 Bottle Dataset - Sheet1.csv`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+├── src/
+│   ├── app/              # Next.js app directory
+│   ├── components/       # React components
+│   │   ├── bottle-card.tsx
+│   │   ├── profile-summary.tsx
+│   │   ├── recommendations-section.tsx
+│   │   ├── user-search.tsx
+│   │   └── ui/           # shadcn UI components
+│   ├── lib/              # Utility functions and libraries
+│   │   ├── api.ts        # API integration
+│   │   ├── recommendation-engine.ts # AI recommendation logic
+│   │   └── utils.ts
+├── data/                 # Dataset files
+│   └── 501 Bottle Dataset - Sheet1.csv  # Main bottle dataset
+├── public/               # Static files
+└── ...config files
+```
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[MIT License](LICENSE)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Acknowledgments
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- BAXUS team for providing the API and dataset
+- shadcn for the beautiful UI components
+- Vercel for hosting and deployment solutions
