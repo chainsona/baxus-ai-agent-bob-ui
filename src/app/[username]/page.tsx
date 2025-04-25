@@ -38,8 +38,8 @@ export async function generateMetadata({
       const topRecommendation = result.recommendations[0];
       const topBottleImageUrl = topRecommendation?.bottle?.image_url;
 
-      const title = `${username}'s Whisky Recommendations | BAXUS`;
-      const description = `Personalized whisky recommendations for ${username} by BAXUS AI Agent Bob`;
+      const title = `${username}'s Recommendations | BAXUS AI Agent BOB`;
+      const description = `Personalized whisky recommendations for ${username} by BAXUS AI Agent BOB`;
 
       return {
         title,
@@ -48,6 +48,9 @@ export async function generateMetadata({
           title,
           description,
           type: 'profile',
+          url: `${baseUrl}/${username}`,
+          siteName: 'BAXUS',
+          locale: 'en_US',
           images: topBottleImageUrl
             ? [
                 {
@@ -57,7 +60,14 @@ export async function generateMetadata({
                   alt: `${username}'s top whisky recommendation`,
                 },
               ]
-            : [`${baseUrl}/baxus-bob-og.png`],
+            : [
+                {
+                  url: `${baseUrl}/baxus-BOB-og.png`,
+                  width: 1200,
+                  height: 630,
+                  alt: `${username}'s whisky recommendations by BAXUS`,
+                },
+              ],
         },
         twitter: {
           card: 'summary_large_image',
@@ -65,7 +75,7 @@ export async function generateMetadata({
           description,
           images: topBottleImageUrl
             ? [topBottleImageUrl]
-            : [`${baseUrl}/baxus-bob-og.png`],
+            : [`${baseUrl}/baxus-BOB-og.png`],
         },
       };
     }
@@ -77,12 +87,28 @@ export async function generateMetadata({
   // Default metadata if user data can't be fetched or has no bottles
   return {
     title: `${username} | BAXUS Whisky Recommendations`,
-    description: 'Personalized whisky recommendations by BAXUS AI Agent Bob',
+    description: 'Personalized whisky recommendations by BAXUS AI Agent BOB',
     openGraph: {
-      images: ['/baxus-bob-og.png'],
+      title: `${username} | BAXUS Whisky Recommendations`,
+      description: 'Personalized whisky recommendations by BAXUS AI Agent BOB',
+      type: 'profile',
+      url: `${baseUrl}/${username}`,
+      siteName: 'BAXUS',
+      locale: 'en_US',
+      images: [
+        {
+          url: `${baseUrl}/baxus-BOB-og.png`,
+          width: 1200,
+          height: 630,
+          alt: 'BAXUS - Meet BOB, Your Whisky Expert',
+        },
+      ],
     },
     twitter: {
-      images: ['/baxus-bob-og.png'],
+      card: 'summary_large_image',
+      title: `${username} | BAXUS Whisky Recommendations`,
+      description: 'Personalized whisky recommendations by BAXUS AI Agent BOB',
+      images: [`${baseUrl}/baxus-BOB-og.png`],
     },
   };
 }
