@@ -22,11 +22,12 @@ interface RecommendationsSectionProps {
  */
 function shareToX(bottleName: string, bottleType: string, pathname: string) {
   const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_VERCEL_URL
+    process.env.NEXT_PUBLIC_APP_URL ||
+    (process.env.NEXT_PUBLIC_VERCEL_URL
       ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-      : 'http://localhost:3000';
+      : 'http://localhost:3000');
 
-  const text = `Check out my top spirits recommendations by @BAXUSco Bob, whisky AI expert. Powered by @TheMaikers ${baseUrl}${pathname}`;
+  const text = `Check out my top spirits recommendations by @BAXUSco BOB, whisky expert. Powered by @TheMaikers ${baseUrl}${pathname}`;
   const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank', 'noopener,noreferrer');
 }
