@@ -64,7 +64,7 @@ function shareToX(username: string, bottleCount: number, pathname: string) {
       ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
       : 'http://localhost:3000');
 
-  const text = `Check out my whisky collection with personalized recommendations by @BAXUSco BOB, whisky expert. Powered by @TheMaikers AI Plaform ${baseUrl}${pathname}.`;
+  const text = `Check out my whisky collection with personalized recommendations by @BAXUSco BOB, whisky expert.\n\nPowered by @TheMaikers AI Plaform ${baseUrl}${pathname}`;
   const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank', 'noopener,noreferrer');
 }
