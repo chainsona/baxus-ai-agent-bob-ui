@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { UserPageClient } from './user-page-client';
-import { fetchUserBar, loadBottleDataset } from '@/lib/api';
-import { generateRecommendations } from '@/lib/recommendation-engine';
+import { fetchUserProfile, fetchRecommendations } from '@/lib/api';
 
 type Params = Promise<{
   username: string;
@@ -26,20 +25,22 @@ export async function generateMetadata({
       : 'http://localhost:3000');
 
   try {
-    // Fetch user bar data
-    const userData = await fetchUserBar(username);
+    // Fetch user profile data
+    const profileData = await fetchUserProfile(username);
 
-    // Validate user data and fetch bottles if available
-    if (userData?.bottles?.length > 0) {
-      const bottles = await loadBottleDataset();
-      const result = await generateRecommendations(userData, bottles);
+    // Validate user data and generate metadata if available
+    if (profileData?.collection?.stats?.bottle_count > 0) {
+      // Fetch recommendations
+      const result = await fetchRecommendations(username);
 
       // Get the top recommendation bottle image if available
-      const topRecommendation = result.recommendations[0];
-      const topBottleImageUrl = topRecommendation?.bottle?.image_url;
+      // The API now returns 'similar' and 'diverse' arrays
+      const topRecommendation = result.similar?.[0] || result.diverse?.[0];
+      const topBottleImageUrl = topRecommendation?.image_url;
 
-      const title = `${username}'s Recommendations | BAXUS AI Agent BOB`;
-      const description = `Personalized whisky recommendations for ${username} by BAXUS AI Agent BOB`;
+      // Create metadata with taste profile information
+      const title = `${username}'s ${profileData.taste_profile.favorite_type} Collection | BAXUS AI Agent BOB`;
+      const description = `${username}'s whisky collection featuring ${profileData.taste_profile.dominant_flavors.join(', ')} flavors. Personalized recommendations by BAXUS AI Agent BOB`;
 
       return {
         title,

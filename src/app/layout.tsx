@@ -18,33 +18,33 @@ const baseUrl =
     : 'http://localhost:3000');
 
 export const metadata: Metadata = {
-  title: 'BAXUS - Meet Bob, Your Whisky Expert',
+  title: 'BAXUS - Meet BOB, Your Whisky Expert',
   description:
-    'BAXUS AI Agent Bob analyzes your whisky collection and provides personalized recommendations',
+    'BAXUS AI Agent BOB analyzes your whisky collection and provides personalized recommendations',
   metadataBase: new URL(baseUrl),
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    title: 'BAXUS - Meet Bob, Your Whisky Expert',
+    title: 'BAXUS - Meet BOB, Your Whisky Expert',
     description:
-      'BAXUS AI Agent Bob analyzes your whisky collection and provides personalized recommendations',
+      'BAXUS AI Agent BOB analyzes your whisky collection and provides personalized recommendations',
     siteName: 'BAXUS',
     images: [
       {
-        url: `${baseUrl}/baxus-bob-og.png`,
+        url: `${baseUrl}/baxus-BOB-og.png`,
         width: 1200,
         height: 630,
-        alt: 'BAXUS - Meet Bob, Your Whisky Expert',
+        alt: 'BAXUS - Meet BOB, Your Whisky Expert',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BAXUS - Meet Bob, Your Whisky Expert',
+    title: 'BAXUS - Meet BOB, Your Whisky Expert',
     description:
-      'BAXUS AI Agent Bob analyzes your whisky collection and provides personalized recommendations',
-    images: [`${baseUrl}/baxus-bob-og.png`],
+      'BAXUS AI Agent BOB analyzes your whisky collection and provides personalized recommendations',
+    images: [`${baseUrl}/baxus-BOB-og.png`],
   },
 };
 

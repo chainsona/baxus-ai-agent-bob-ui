@@ -1,14 +1,21 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 export default function SiteHeader() {
+  const pathname = usePathname();
+
+  // Internal navigation links
+  const internalLinks = [{ href: '/', label: 'Home' }];
+
   // External links data
-  const navLinks = [
+  const externalLinks = [
     { href: 'https://breakout.maikers.com', label: 'MAIKERS BREAKOUT' },
     { href: 'https://baxus.co', label: 'Baxus' },
     {
-      href: 'https://github.com/chainsona/baxus-ai-agent-bob',
+      href: 'https://github.com/chainsona/baxus-ai-agent-BOB',
       label: 'GitHub',
     },
   ];
@@ -27,8 +34,25 @@ export default function SiteHeader() {
           </Link>
         </div>
         <div className="flex items-center gap-6">
-          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
-            {navLinks.map((link) => (
+          <nav className="flex items-center space-x-6 text-sm font-medium">
+            {internalLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={cn(
+                  'transition-colors hover:text-primary',
+                  pathname === link.href && 'text-primary font-semibold'
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="h-4 border-l border-muted-foreground/20" />
+
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+            {externalLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}

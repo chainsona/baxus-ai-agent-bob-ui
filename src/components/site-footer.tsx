@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Instagram, Facebook, Linkedin } from "lucide-react";
+import Link from 'next/link';
+import { Instagram, Facebook, Linkedin } from 'lucide-react';
 
 export default function SiteFooter() {
   return (
@@ -18,9 +18,9 @@ export default function SiteFooter() {
             </p>
             <div className="flex flex-col space-y-2">
               <p className="text-sm text-white/70">
-                &copy; 2025 MAIKERS.{" "}
+                &copy; 2025 MAIKERS.{' '}
                 <Link
-                  href="https://earn.superteam.fun/listing/ai-agent-bob/?utm_source=maikers&utm_medium=footer&utm_campaign=superteamearn_bounty_baxus_aiagentbob"
+                  href="https://earn.superteam.fun/listing/ai-agent-BOB/?utm_source=maikers&utm_medium=footer&utm_campaign=superteamearn_bounty_baxus_aiagentbob"
                   className="text-sm text-white/70 hover:text-primary transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"

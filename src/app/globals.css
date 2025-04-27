@@ -116,6 +116,67 @@
     --input: 220 10% 25%;
     --ring: 182 45% 40%;
   }
+
+  /* Markdown code styling */
+  .prose code {
+    @apply bg-muted px-1.5 py-0.5 rounded-md text-sm;
+  }
+
+  .prose pre {
+    @apply bg-muted p-4 rounded-md overflow-x-auto text-sm my-4;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 text-xs;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-4 italic my-4;
+  }
+
+  .prose ul {
+    @apply list-disc pl-6 my-4;
+  }
+
+  .prose ol {
+    @apply list-decimal pl-6 my-4;
+  }
+
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    @apply font-semibold my-4;
+  }
+
+  .prose h1 {
+    @apply text-2xl;
+  }
+
+  .prose h2 {
+    @apply text-xl;
+  }
+
+  .prose h3 {
+    @apply text-lg;
+  }
+
+  .prose p {
+    @apply my-2;
+  }
+
+  .prose a {
+    @apply text-primary underline;
+  }
+
+  .prose table {
+    @apply border-collapse w-full my-4;
+  }
+
+  .prose th, .prose td {
+    @apply border border-border p-2 text-sm;
+  }
+
+  .prose th {
+    @apply bg-muted font-medium;
+  }
 }
 
 /* Force applying background color only in light mode */

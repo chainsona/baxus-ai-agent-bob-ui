@@ -2,13 +2,13 @@
 
 ## Overview
 
-Create an AI agent named "Bob" whose main job analyzes users' virtual bars within the BAXUS ecosystem to provide personalized bottle recommendations for their wishlists. Bob at his core, is a whisky expert and is incredibly knowledgeable about the entire industry. He’s the perfect person to go to to get recommendations for new bottles to add to your collection, or give you a profile of your taste.
+Create an AI agent named "BOB" whose main job analyzes users' virtual bars within the BAXUS ecosystem to provide personalized bottle recommendations for their wishlists. BOB at his core, is a whisky expert and is incredibly knowledgeable about the entire industry. He’s the perfect person to go to to get recommendations for new bottles to add to your collection, or give you a profile of your taste.
 
 ## Objectives
 
 - Train an AI agent that has the main functionality of analyzing a user's bar bottles to make personalized suggestions.
 
-## Bob’s Core Functionality
+## BOB’s Core Functionality
 
 1. Collection Analysis:
 
@@ -27,7 +27,7 @@ Create an AI agent named "Bob" whose main job analyzes users' virtual bars withi
 1. API Integration:
 
 - Utilize the provided endpoint to access user’s bar and wishlist data
-- Bob will determine bottles to recommend from the provided dataset of approximately 500 bottles
+- BOB will determine bottles to recommend from the provided dataset of approximately 500 bottles
 
 2. Implementation Freedom:
 
@@ -41,7 +41,7 @@ Create an AI agent named "Bob" whose main job analyzes users' virtual bars withi
 
 ## Deliverables
 
-- A working prototype of Bob
+- A working prototype of BOB
 - Demo showing personalized recommendations based on sample user data
 - Code repository with clear installation and usage instructions
 

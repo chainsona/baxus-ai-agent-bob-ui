@@ -1,6 +1,6 @@
-# Bob AI Architecture
+# BOB AI Architecture
 
-This document outlines the architecture of the Bob AI whisky recommendation agent, including component structure, data flow, and key processes.
+This document outlines the architecture of the BOB AI whisky recommendation agent, including component structure, data flow, and key processes.
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ This document outlines the architecture of the Bob AI whisky recommendation agen
 
 ## System Overview
 
-Bob AI is a Next.js application that analyzes user whisky collections from the BAXUS platform and provides personalized bottle recommendations. The system integrates with the BAXUS API to fetch user data and uses a sophisticated recommendation algorithm to suggest new bottles based on user preferences.
+BOB AI is a Next.js application that analyzes user whisky collections from the BAXUS platform and provides personalized bottle recommendations. The system integrates with the BAXUS API to fetch user data and uses a sophisticated recommendation algorithm to suggest new bottles based on user preferences.
 
 ### High-Level Architecture
 

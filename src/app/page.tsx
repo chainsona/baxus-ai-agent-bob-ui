@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { UserSearch } from '@/components/user-search';
 import { BarChart3, Droplet, Award, GlassWater } from 'lucide-react';
+import { UserSearch } from '@/components/user-search';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,19 +29,19 @@ export default function Home() {
         <div className="container px-4 sm:px-6 relative">
           <div className="mx-auto max-w-3xl text-center mb-6 md:mb-10">
             <h1 className="mb-4 md:mb-6 text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-[#222222]">
-              Meet <span className="text-[#1D6D72]">Bob</span>
+              Meet <span className="text-[#1D6D72]">BOB</span>
             </h1>
             <div className="mb-4 flex justify-center">
               <Image
-                src="/baxus-bob-pfp.png"
-                alt="Bob, your whisky expert"
+                src="/baxus-BOB-pfp.png"
+                alt="BOB, your whisky expert"
                 width={150}
                 height={150}
                 className="rounded-full border-2 border-[#1D6D72]"
                 priority
               />
             </div>
-            <p className="text-lg sm:text-xl text-neutral-800 px-4 sm:px-0">
+            <p className="text-lg sm:text-xl text-neutral-800 px-4 sm:px-0 mb-6">
               Your personal whisky expert for exquisite recommendations
             </p>
           </div>
@@ -61,7 +61,7 @@ export default function Home() {
                   <GlassWater className="h-6 w-6 sm:h-8 sm:w-8 text-[#1D6D72]" />
                 }
                 title="Expert Curation"
-                description="Bob has deep knowledge of whisky profiles, distilleries, and flavor notes"
+                description="BOB has deep knowledge of whisky profiles, distilleries, and flavor notes"
               />
               <FeatureCard
                 icon={

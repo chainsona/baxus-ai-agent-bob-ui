@@ -1,8 +1,8 @@
-import { Percent, DollarSign, Star, ThumbsUp, ArrowRight } from "lucide-react";
+import { Percent, DollarSign, Star, ThumbsUp, ArrowRight } from 'lucide-react';
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Bottle } from "@/lib/api";
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Bottle } from '@/lib/api';
 
 interface BottleCardProps {
   bottle: Bottle;
@@ -94,7 +94,7 @@ export function BottleCard({ bottle, reason }: BottleCardProps) {
             <div className="mt-2 sm:mt-3 rounded-md border border-primary/20 bg-primary/5 p-2 sm:p-3">
               <h4 className="flex items-center text-xs font-medium text-primary mb-1.5">
                 <ThumbsUp className="h-3 w-3 mr-1" />
-                <span>Why Bob Recommends This</span>
+                <span>Why BOB Recommends This</span>
               </h4>
               <ul className="space-y-1">
                 {reasonPoints.map((point, index) => (
@@ -142,12 +142,8 @@ export function BottleCard({ bottle, reason }: BottleCardProps) {
           </div>
           {/* Gradient overlay for name */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent p-4 text-white">
-            <h3 className="text-lg font-medium leading-tight">
-              {bottle.name}
-            </h3>
-            <p className="text-sm text-white/95">
-              {bottle.spirit_type}
-            </p>
+            <h3 className="text-lg font-medium leading-tight">{bottle.name}</h3>
+            <p className="text-sm text-white/95">{bottle.spirit_type}</p>
           </div>
         </div>
 
@@ -160,9 +156,7 @@ export function BottleCard({ bottle, reason }: BottleCardProps) {
                 <div className="flex items-center rounded-md border border-primary/10 bg-secondary p-3 transition-colors duration-300 group-hover:border-primary/30 group-hover:bg-secondary">
                   <Percent className="h-5 w-5 text-primary mr-2" />
                   <div className="flex flex-col">
-                    <span className="text-xs text-muted-foreground">
-                      ABV
-                    </span>
+                    <span className="text-xs text-muted-foreground">ABV</span>
                     <span className="text-base font-medium text-foreground">
                       {bottle.abv}%
                     </span>
@@ -174,9 +168,7 @@ export function BottleCard({ bottle, reason }: BottleCardProps) {
                 <div className="flex items-center rounded-md border border-primary/10 bg-secondary p-3 transition-colors duration-300 group-hover:border-primary/30 group-hover:bg-secondary">
                   <DollarSign className="h-5 w-5 text-primary mr-2" />
                   <div className="flex flex-col">
-                    <span className="text-xs text-muted-foreground">
-                      MSRP
-                    </span>
+                    <span className="text-xs text-muted-foreground">MSRP</span>
                     <span className="text-base font-medium text-foreground">
                       ${bottle.avg_msrp.toFixed(0)}
                     </span>
@@ -188,9 +180,7 @@ export function BottleCard({ bottle, reason }: BottleCardProps) {
                 <div className="flex items-center rounded-md border border-primary/10 bg-secondary p-3 transition-colors duration-300 group-hover:border-primary/30 group-hover:bg-secondary">
                   <Star className="h-5 w-5 text-primary mr-2" />
                   <div className="flex flex-col">
-                    <span className="text-xs text-muted-foreground">
-                      Rank
-                    </span>
+                    <span className="text-xs text-muted-foreground">Rank</span>
                     <span className="text-base font-medium text-foreground">
                       #{bottle.ranking}
                     </span>
@@ -204,7 +194,7 @@ export function BottleCard({ bottle, reason }: BottleCardProps) {
               <div className="mt-auto flex-grow rounded-md border border-primary/20 bg-primary/5 p-4 transition-colors duration-300 group-hover:border-primary/30 group-hover:bg-primary/10">
                 <h4 className="flex items-center text-sm font-medium text-primary mb-2">
                   <ThumbsUp className="h-4 w-4 mr-2" />
-                  <span>Why Bob Recommends This</span>
+                  <span>Why BOB Recommends This</span>
                 </h4>
                 <ul className="space-y-2">
                   {reasonPoints.map((point, index) => (
@@ -234,32 +224,32 @@ function parseReasonIntoPoints(reason: string): string[] {
   const points: string[] = [];
 
   // Check for typical phrases in the recommendation text
-  if (reason.includes("matches your preference")) {
-    points.push("Matches your taste preferences");
+  if (reason.includes('matches your preference')) {
+    points.push('Matches your taste preferences');
   }
 
-  if (reason.includes("would add variety")) {
-    points.push("Adds variety to your collection");
+  if (reason.includes('would add variety')) {
+    points.push('Adds variety to your collection');
   }
 
-  if (reason.includes("good value")) {
-    points.push("Offers excellent value for money");
+  if (reason.includes('good value')) {
+    points.push('Offers excellent value for money');
   }
 
-  if (reason.includes("premium selection")) {
-    points.push("Premium selection worth the investment");
+  if (reason.includes('premium selection')) {
+    points.push('Premium selection worth the investment');
   }
 
-  if (reason.includes("typical price range")) {
-    points.push("Within your typical price range");
+  if (reason.includes('typical price range')) {
+    points.push('Within your typical price range');
   }
 
-  if (reason.includes("highly rated") || reason.includes("ranked #")) {
-    points.push("Highly rated among whisky enthusiasts");
+  if (reason.includes('highly rated') || reason.includes('ranked #')) {
+    points.push('Highly rated among whisky enthusiasts');
   }
 
-  if (reason.includes("popular among")) {
-    points.push("Popular among BAXUS users");
+  if (reason.includes('popular among')) {
+    points.push('Popular among BAXUS users');
   }
 
   // If we couldn't extract specific points, use the whole reason as one point

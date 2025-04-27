@@ -54,7 +54,15 @@ export function UserSearch({ onSearch, isLoading }: UserSearchProps) {
           </Button>
         </form>
         <p className="mt-2 sm:mt-3 text-center text-[10px] sm:text-xs text-muted-foreground dark:text-white/70">
-          Try searching for &quot;carriebaxus&quot; for a sample collection
+          Try with{' '}
+          <button
+            onClick={() => onSearch('carriebaxus')}
+            className="text-primary hover:underline focus:outline-none focus:ring-0"
+            disabled={isLoading}
+          >
+            carriebaxus
+          </button>{' '}
+          for a sample collection
         </p>
 
         <div className="mt-4 sm:mt-6 relative overflow-hidden rounded-lg shadow-lg">
@@ -70,7 +78,7 @@ export function UserSearch({ onSearch, isLoading }: UserSearchProps) {
             <div className="flex flex-col items-center">
               <div className="flex items-center justify-center mb-2">
                 <span className="inline-block bg-white/90 dark:bg-white text-amber-800 font-bold text-xs sm:text-sm px-3 py-1 rounded-full transform -rotate-2 shadow-sm">
-                  🥃 SPIRITS ENTHUSIASTS 🥃
+                  🥃 NOT REGISTERED YET? 🥃
                 </span>
               </div>
 
@@ -79,13 +87,18 @@ export function UserSearch({ onSearch, isLoading }: UserSearchProps) {
               </h3>
 
               <p className="text-white/90 text-center text-xs sm:text-sm mb-3 max-w-xs">
-                The #1 App for Finding Spirits You Want
+                Create your own whisky collection and get personalized
+                recommendations
               </p>
 
               <div className="bg-white hover:bg-white/90 text-amber-800 font-medium rounded-full px-5 py-2 flex items-center gap-2 transition-all transform hover:scale-105 shadow-md">
                 <ExternalLink className="h-4 w-4" />
                 <span className="text-xs sm:text-sm">Download Free</span>
               </div>
+
+              <p className="text-white/80 text-[10px] sm:text-xs mt-2">
+                Join thousands of whisky enthusiasts tracking their collections
+              </p>
             </div>
           </a>
         </div>
