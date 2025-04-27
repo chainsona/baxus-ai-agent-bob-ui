@@ -57,7 +57,7 @@ export function UserSearch({ onSearch, isLoading }: UserSearchProps) {
           Try with{' '}
           <button
             onClick={() => onSearch('carriebaxus')}
-            className="text-primary hover:underline focus:outline-none focus:ring-0"
+            className="text-primary underline hover:no-underline focus:outline-none focus:ring-0"
             disabled={isLoading}
           >
             carriebaxus
