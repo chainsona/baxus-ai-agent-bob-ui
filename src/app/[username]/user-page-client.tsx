@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Share } from 'lucide-react';
 import { LoadingWhisky } from '@/components/loading-whisky';
+import { useUser } from '@/lib/UserContext';
 
 interface UserPageClientProps {
   username: string;
@@ -72,6 +73,7 @@ function shareToX(username: string, bottleCount: number, pathname: string) {
 export function UserPageClient({ username }: UserPageClientProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const { setUsername } = useUser();
 
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingAssets, setIsLoadingAssets] = useState(false);
@@ -79,6 +81,11 @@ export function UserPageClient({ username }: UserPageClientProps) {
   const [recommendations, setRecommendations] =
     useState<EnhancedRecommendations | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Update the username in context when this component mounts
+    setUsername(username);
+  }, [username, setUsername]);
 
   useEffect(() => {
     async function loadUserData() {

@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
 import ThemeProvider from '@/components/theme-provider';
+import AiChat from '@/components/ai-chat';
+import { UserProvider } from '@/lib/UserContext';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -57,11 +59,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider>
-          <div className="flex min-h-screen flex-col">
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </div>
+          <UserProvider>
+            <div className="flex min-h-screen flex-col">
+              <SiteHeader />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+              <AiChat />
+            </div>
+          </UserProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,4 +1,4 @@
-# 🥃 BOB AI - BAXUS Whisky Recommendation Agent
+# 🥃 BAXUS BOB - Expert Whisky AI Agent
 
 BOB is an AI agent designed for the BAXUS ecosystem that analyzes users' virtual whisky bars to provide personalized bottle recommendations for their wishlists.
 

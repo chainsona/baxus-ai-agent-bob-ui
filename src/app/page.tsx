@@ -1,19 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { BarChart3, Droplet, Award, GlassWater } from 'lucide-react';
 import { UserSearch } from '@/components/user-search';
+import { useUser } from '@/lib/UserContext';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { setUsername } = useUser();
+
+  // Clear user context when landing on the root page
+  useEffect(() => {
+    // Clear username from context and localStorage
+    setUsername(null);
+  }, [setUsername]);
 
   const handleSearch = async (username: string) => {
     setIsLoading(true);
 
     try {
+      // Set username in the user context
+      setUsername(username);
+
       // Redirect to the username page
       router.push(`/${username}`);
     } catch (err) {
@@ -61,7 +72,7 @@ export default function Home() {
                   <GlassWater className="h-6 w-6 sm:h-8 sm:w-8 text-[#1D6D72]" />
                 }
                 title="Expert Curation"
-                description="BOB has deep knowledge of whisky profiles, distilleries, and flavor notes"
+                description="Deep knowledge of whisky profiles, distilleries, and flavor notes"
               />
               <FeatureCard
                 icon={
