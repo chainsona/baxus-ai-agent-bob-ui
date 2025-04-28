@@ -59,13 +59,11 @@ interface RecommendationItem {
  * Share content to X (Twitter)
  */
 function shareToX(username: string, bottleCount: number, pathname: string) {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL ||
-    (process.env.NEXT_PUBLIC_VERCEL_URL
-      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-      : 'http://localhost:3000');
+  const baseUrl = 'https://baxus-bob.maikers.com';
 
-  const text = `Check out my whisky collection with personalized recommendations by @BAXUSco BOB, whisky expert.\n\nPowered by @TheMaikers AI Plaform ${baseUrl}${pathname}`;
+  const text =
+    'Check out my bar with personalized recommendations from @BAXUSco BOB, whisky expert.' +
+    `\n\nPowered by @TheMaikers AI Plaform ${baseUrl}${pathname}`;
   const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank', 'noopener,noreferrer');
 }
