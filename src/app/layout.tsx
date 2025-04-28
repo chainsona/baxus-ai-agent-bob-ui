@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
 import ThemeProvider from '@/components/theme-provider';
+import AiChat from '@/components/ai-chat';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,32 +19,32 @@ const baseUrl =
     : 'http://localhost:3000');
 
 export const metadata: Metadata = {
-  title: 'BAXUS - Meet BOB, Your Whisky Expert',
+  title: 'BAXUS BOB - Meet Your Whisky Expert',
   description:
-    'BAXUS AI Agent BOB analyzes your whisky collection and provides personalized recommendations',
+    'BAXUS BOB is your whisky expert. He analyzes your whisky collection and provides personalized recommendations',
   metadataBase: new URL(baseUrl),
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    title: 'BAXUS - Meet BOB, Your Whisky Expert',
+    title: 'BAXUS BOB - Meet Your Whisky Expert',
     description:
-      'BAXUS AI Agent BOB analyzes your whisky collection and provides personalized recommendations',
+      'BAXUS BOB is your whisky expert. He analyzes your whisky collection and provides personalized recommendations',
     siteName: 'BAXUS',
     images: [
       {
         url: `${baseUrl}/baxus-BOB-og.png`,
         width: 1200,
         height: 630,
-        alt: 'BAXUS - Meet BOB, Your Whisky Expert',
+        alt: 'BAXUS BOB - Meet Your Whisky Expert',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BAXUS - Meet BOB, Your Whisky Expert',
+    title: 'BAXUS BOB - Meet Your Whisky Expert',
     description:
-      'BAXUS AI Agent BOB analyzes your whisky collection and provides personalized recommendations',
+      'BAXUS BOB is your whisky expert. He analyzes your whisky collection and provides personalized recommendations',
     images: [`${baseUrl}/baxus-BOB-og.png`],
   },
 };
@@ -61,6 +62,7 @@ export default function RootLayout({
             <SiteHeader />
             <main className="flex-1">{children}</main>
             <SiteFooter />
+            <AiChat />
           </div>
         </ThemeProvider>
       </body>
