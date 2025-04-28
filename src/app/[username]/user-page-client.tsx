@@ -265,7 +265,7 @@ export function UserPageClient({ username }: UserPageClientProps) {
               }
             >
               <Share className="h-4 w-4" />
-              <span className="hidden sm:inline">Share Profile</span>
+              <span className="hidden sm:inline">Share on X</span>
             </Button>
           )}
         </div>
