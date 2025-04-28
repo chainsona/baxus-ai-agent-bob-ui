@@ -133,9 +133,9 @@ export function RecommendationCard({
             <h4 className="text-base font-medium text-[#222222]">
               {bottle.name}
             </h4>
-            <p className="text-sm text-neutral-600 flex items-center space-x-2 mt-1">
+            <div className="text-sm text-neutral-600 flex items-center space-x-2 mt-1">
               <SpiritTypeBadge type={bottle.spirit_type} variant={variant} />
-            </p>
+            </div>
           </div>
 
           {/* Metrics displayed horizontally */}
