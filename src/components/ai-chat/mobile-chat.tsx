@@ -43,7 +43,7 @@ export function MobileChat({
           style={{ backgroundColor: '#1D6D72' }}
           aria-label="Open Chat"
         >
-          <MessageCircle className="h-8 w-8" />
+          <MessageCircle className="h-10 w-10" />
         </Button>
       </SheetTrigger>
       <SheetContent
@@ -52,7 +52,7 @@ export function MobileChat({
         style={{ backgroundColor: '#F8F6F1' }}
       >
         <SheetHeader className="sr-only">
-          <SheetTitle>BOB Chat</SheetTitle>
+          <SheetTitle>Chat with BOB</SheetTitle>
         </SheetHeader>
         <div className="flex flex-col h-full">
           <ChatBody

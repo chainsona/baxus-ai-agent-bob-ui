@@ -1,9 +1,10 @@
 import { cn } from '@/lib/utils';
-import { Bot, User } from 'lucide-react';
+import { User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { Message } from './types';
+import Image from 'next/image';
 
 interface MessageBubbleProps {
   message: Message;
@@ -18,8 +19,14 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       )}
     >
       {message.role === 'assistant' && (
-        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-          <Bot className="h-4 w-4 text-primary" />
+        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+          <Image
+            src="/bob-avatar.png"
+            alt="BOB Avatar"
+            width={32}
+            height={32}
+            className="w-full h-full object-cover"
+          />
         </div>
       )}
       <div

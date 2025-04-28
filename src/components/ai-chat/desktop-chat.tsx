@@ -41,7 +41,7 @@ export function DesktopChat({
         style={{ backgroundColor: '#1D6D72' }}
         aria-label="Open Chat"
       >
-        <MessageCircle className="h-8 w-8" />
+        <MessageCircle className="h-10 w-10" />
       </Button>
 
       {/* Chat Panel */}

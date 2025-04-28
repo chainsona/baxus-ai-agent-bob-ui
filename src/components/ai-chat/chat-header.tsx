@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { MessageCircle, X } from 'lucide-react';
+import { X } from 'lucide-react';
+import Image from 'next/image';
 
 interface ChatHeaderProps {
   username?: string | null;
@@ -15,8 +16,16 @@ export function ChatHeader({
   return (
     <div className="flex items-center justify-between px-4 py-3 bg-white border-b border-neutral-200">
       <div className="flex items-center gap-2">
-        <MessageCircle className="h-5 w-5 text-primary" />
-        <h3 className="font-medium text-foreground">BOB Chat</h3>
+        <div className="w-6 h-6 rounded-full overflow-hidden">
+          <Image
+            src="/bob-avatar.png"
+            alt="BOB Avatar"
+            width={24}
+            height={24}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <h3 className="font-medium text-foreground">Chat with BOB</h3>
         {username && (
           <span className="ml-2 px-2 py-0.5 text-xs bg-primary/10 text-primary rounded-full">
             @{username}
