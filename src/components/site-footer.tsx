@@ -18,7 +18,7 @@ export default function SiteFooter() {
             </p>
             <div className="flex flex-col space-y-2">
               <p className="text-sm text-white/70">
-                &copy; 2025 MAIKERS.{' '}
+                &copy; 2025 SOONA.{' '}
                 <Link
                   href="https://earn.superteam.fun/listing/ai-agent-BOB/?utm_source=maikers&utm_medium=footer&utm_campaign=superteamearn_bounty_baxus_aiagentbob"
                   className="text-sm text-white/70 hover:text-primary transition-colors"
