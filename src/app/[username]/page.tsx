@@ -36,7 +36,7 @@ export async function generateMetadata({
       locale: 'en_US',
       images: [
         {
-          url: `${baseUrl}/baxus-BOB-og.png`,
+          url: `${baseUrl}/baxus-bob-og.png`,
           width: 1200,
           height: 630,
           alt: 'BAXUS - Meet BOB, Your Whisky Expert',
@@ -47,7 +47,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: `${username} | BAXUS Whisky Recommendations`,
       description: 'Personalized whisky recommendations by BAXUS AI Agent BOB',
-      images: [`${baseUrl}/baxus-BOB-og.png`],
+      images: [`${baseUrl}/baxus-bob-og.png`],
     },
   };
 }

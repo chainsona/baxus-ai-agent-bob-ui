@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
 import ThemeProvider from '@/components/theme-provider';
-import AiChat from '@/components/ai-chat';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
     siteName: 'BAXUS',
     images: [
       {
-        url: `${baseUrl}/baxus-BOB-og.png`,
+        url: `${baseUrl}/baxus-bob-og.png`,
         width: 1200,
         height: 630,
         alt: 'BAXUS BOB - Meet Your Whisky Expert',
@@ -45,7 +44,7 @@ export const metadata: Metadata = {
     title: 'BAXUS BOB - Meet Your Whisky Expert',
     description:
       'BAXUS BOB is your whisky expert. He analyzes your whisky collection and provides personalized recommendations',
-    images: [`${baseUrl}/baxus-BOB-og.png`],
+    images: [`${baseUrl}/baxus-bob-og.png`],
   },
 };
 
@@ -62,7 +61,6 @@ export default function RootLayout({
             <SiteHeader />
             <main className="flex-1">{children}</main>
             <SiteFooter />
-            <AiChat />
           </div>
         </ThemeProvider>
       </body>

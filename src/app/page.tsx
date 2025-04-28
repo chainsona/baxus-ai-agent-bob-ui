@@ -33,7 +33,7 @@ export default function Home() {
             </h1>
             <div className="mb-4 flex justify-center">
               <Image
-                src="/baxus-BOB-pfp.png"
+                src="/baxus-bob-pfp.png"
                 alt="BOB, your whisky expert"
                 width={150}
                 height={150}
