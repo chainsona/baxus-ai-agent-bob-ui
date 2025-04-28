@@ -1,17 +1,14 @@
 import { NextResponse } from 'next/server';
 import type { Bottle } from '@/lib/api';
 
-interface Params {
-  nftAddress: string;
-}
+type Params = Promise<{ nftAddress: string }>;
 
 /**
  * Proxy endpoint for fetching asset data from Baxus
  */
-export async function GET(request: Request, context: { params: Params }) {
+export async function GET(request: Request, { params }: { params: Params }) {
   try {
-    const params = await context.params;
-    const nftAddress = params.nftAddress;
+    const { nftAddress } = await params;
 
     // Attempt to fetch from the BAXUS Asset API
     const response = await fetch(

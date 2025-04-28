@@ -19,6 +19,33 @@ export function FeaturedRecommendation({
     return null;
   }
 
+  // Create a compatible object for getBottleProperty
+  const recommendationWithBottle = {
+    bottle: recommendation.bottle,
+    ...recommendation.bottle,
+  };
+
+  // Type-safe helper function that returns a string
+  const getStringProp = (prop: string, fallback: string = '') => {
+    return String(
+      getBottleProperty(recommendationWithBottle, prop) || fallback
+    );
+  };
+
+  // Type-safe helper function that returns a number
+  const getNumberProp = (prop: string, fallback: number = 0) => {
+    const value = getBottleProperty(recommendationWithBottle, prop);
+    return value !== null && value !== undefined ? Number(value) : fallback;
+  };
+
+  // Type-safe helper function that checks if a property exists
+  const hasProp = (prop: string) => {
+    return (
+      getBottleProperty(recommendationWithBottle, prop) !== null &&
+      getBottleProperty(recommendationWithBottle, prop) !== undefined
+    );
+  };
+
   return (
     <Card className="overflow-hidden bg-white border-[#1D6D72]/10 rounded-lg shadow-sm">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -27,26 +54,23 @@ export function FeaturedRecommendation({
           <div className="absolute top-2 right-2 z-10">
             <RecommendationBadge type="top-pick">Top Pick</RecommendationBadge>
           </div>
-          {getBottleProperty(recommendation, 'image_url') ? (
+          {hasProp('image_url') ? (
             <img
-              src={getBottleProperty(recommendation, 'image_url')}
-              alt={getBottleProperty(recommendation, 'name', 'Whisky bottle')}
+              src={getStringProp('image_url')}
+              alt={getStringProp('name', 'Whisky bottle')}
               className="max-h-[400px] object-contain transition-all duration-300 hover:scale-105"
             />
           ) : (
             <div className="h-[400px] w-full flex flex-col items-center justify-center bg-[#F8F6F1]/30 p-4 text-center">
               <div className="text-6xl font-bold text-[#1D6D72]">
-                {getBottleProperty(recommendation, 'name', 'WB').substring(
-                  0,
-                  2
-                )}
+                {getStringProp('name', 'WB').substring(0, 2)}
               </div>
               <p className="mt-4 text-base text-neutral-600">
                 No image available
               </p>
             </div>
           )}
-          {getBottleProperty(recommendation, 'avg_msrp') && (
+          {hasProp('avg_msrp') && (
             <div className="absolute bottom-4 left-4">
               <div className="flex flex-col bg-white/90 p-2 rounded-md shadow-sm">
                 <span className="text-xs text-[#1D6D72] font-medium">
@@ -54,11 +78,11 @@ export function FeaturedRecommendation({
                 </span>
                 <div className="flex items-center">
                   <span className="text-2xl font-bold text-[#222222]">
-                    ${getBottleProperty(recommendation, 'avg_msrp').toFixed(0)}
+                    ${getNumberProp('avg_msrp').toFixed(0)}
                   </span>
-                  {getBottleProperty(recommendation, 'listing_url') && (
+                  {hasProp('listing_url') && (
                     <Link
-                      href={getBottleProperty(recommendation, 'listing_url')}
+                      href={getStringProp('listing_url')}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -77,37 +101,31 @@ export function FeaturedRecommendation({
         <div className="p-6 flex flex-col bg-[#F8F6F1]">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-[#222222] mb-2">
-              {getBottleProperty(recommendation, 'name', 'Unnamed Bottle')}
+              {getStringProp('name', 'Unnamed Bottle')}
             </h1>
             <div className="flex space-x-4 mb-4">
-              <SpiritTypeBadge
-                type={getBottleProperty(
-                  recommendation,
-                  'spirit_type',
-                  'Whisky'
-                )}
-              />
-              {getBottleProperty(recommendation, 'proof') ? (
+              <SpiritTypeBadge type={getStringProp('spirit_type', 'Whisky')} />
+              {hasProp('proof') ? (
                 <Badge
                   variant="outline"
                   className="text-neutral-600 bg-white hover:bg-white/90 border-[#1D6D72]/10"
                 >
-                  {getBottleProperty(recommendation, 'proof')} Proof
+                  {getStringProp('proof')} Proof
                 </Badge>
-              ) : getBottleProperty(recommendation, 'abv') ? (
+              ) : hasProp('abv') ? (
                 <Badge
                   variant="outline"
                   className="text-neutral-600 bg-white hover:bg-white/90 border-[#1D6D72]/10"
                 >
-                  {getBottleProperty(recommendation, 'abv')}% Alc/Vol
+                  {getNumberProp('abv')}% Alc/Vol
                 </Badge>
               ) : null}
-              {getBottleProperty(recommendation, 'age') && (
+              {hasProp('age') && (
                 <Badge
                   variant="outline"
                   className="text-neutral-600 bg-white hover:bg-white/90 border-[#1D6D72]/10"
                 >
-                  {getBottleProperty(recommendation, 'age')} Year
+                  {getNumberProp('age')} Year
                 </Badge>
               )}
             </div>
@@ -115,11 +133,7 @@ export function FeaturedRecommendation({
             <div className="mb-6">
               <p className="text-[#222222] line-clamp-4">
                 {recommendation.reason ||
-                  `${getBottleProperty(
-                    recommendation,
-                    'name',
-                    'Unnamed Bottle'
-                  )} is a premium ${getBottleProperty(recommendation, 'spirit_type', 'Whisky').toLowerCase()} recommendation from BOB. This selection complements your collection and matches your taste preferences.`}
+                  `${getStringProp('name', 'Unnamed Bottle')} is a premium ${getStringProp('spirit_type', 'Whisky').toLowerCase()} recommendation from BOB. This selection complements your collection and matches your taste preferences.`}
               </p>
             </div>
           </div>
@@ -130,8 +144,8 @@ export function FeaturedRecommendation({
               <div className="space-y-1">
                 <dt className="text-sm text-neutral-600">Producer</dt>
                 <dd className="text-[#222222] font-medium">
-                  {getBottleProperty(recommendation, 'brand_id')
-                    ? `Brand #${getBottleProperty(recommendation, 'brand_id')}`
+                  {hasProp('brand_id')
+                    ? `Brand #${getStringProp('brand_id')}`
                     : 'Unknown'}
                 </dd>
               </div>
@@ -140,70 +154,66 @@ export function FeaturedRecommendation({
                 <dt className="text-sm text-neutral-600">Type</dt>
                 <dd className="text-[#222222] font-medium">
                   <SpiritTypeBadge
-                    type={getBottleProperty(
-                      recommendation,
-                      'spirit_type',
-                      'Whisky'
-                    )}
+                    type={getStringProp('spirit_type', 'Whisky')}
                   />
                 </dd>
               </div>
 
-              {getBottleProperty(recommendation, 'region') && (
+              {hasProp('region') && (
                 <div className="space-y-1">
                   <dt className="text-sm text-neutral-600">Region</dt>
                   <dd className="text-[#222222] font-medium">
-                    {getBottleProperty(recommendation, 'country')
-                      ? `${getBottleProperty(recommendation, 'region')}, ${getBottleProperty(recommendation, 'country')}`
-                      : getBottleProperty(recommendation, 'region')}
+                    {hasProp('country')
+                      ? `${getStringProp('region')}, ${getStringProp('country')}`
+                      : getStringProp('region')}
                   </dd>
                 </div>
               )}
 
-              {getBottleProperty(recommendation, 'age') && (
+              {hasProp('age') && (
                 <div className="space-y-1">
                   <dt className="text-sm text-neutral-600">Age</dt>
                   <dd className="text-[#222222] font-medium">
-                    {getBottleProperty(recommendation, 'age')} Year
-                    {getBottleProperty(recommendation, 'age') !== 1 ? 's' : ''}
+                    {getNumberProp('age')} Year
+                    {getNumberProp('age') !== 1 ? 's' : ''}
                   </dd>
                 </div>
               )}
 
-              {getBottleProperty(recommendation, 'abv') && (
+              {hasProp('abv') && (
                 <div className="space-y-1">
                   <dt className="text-sm text-neutral-600">ABV</dt>
                   <dd className="text-[#222222] font-medium">
-                    {getBottleProperty(recommendation, 'abv')}%
+                    {getNumberProp('abv')}%
                   </dd>
                 </div>
               )}
 
-              {getBottleProperty(recommendation, 'avg_msrp') && (
+              {hasProp('avg_msrp') && (
                 <div className="space-y-1">
                   <dt className="text-sm text-neutral-600">MSRP</dt>
                   <dd className="text-[#222222] font-medium">
-                    ${getBottleProperty(recommendation, 'avg_msrp').toFixed(0)}
+                    ${getNumberProp('avg_msrp').toFixed(0)}
                   </dd>
                 </div>
               )}
 
-              {getBottleProperty(recommendation, 'ranking') && (
+              {hasProp('ranking') && (
                 <div className="space-y-1">
                   <dt className="text-sm text-neutral-600">Rank</dt>
                   <dd className="text-[#222222] font-medium">
-                    #{getBottleProperty(recommendation, 'ranking')}
+                    #{getNumberProp('ranking')}
                   </dd>
                 </div>
               )}
             </dl>
 
             {/* Add View Asset button if listing URL is available */}
-            {getBottleProperty(recommendation, 'listing_url') && (
+            {hasProp('listing_url') && (
               <div className="flex justify-end mt-4">
                 <ActionButton
-                  url={getBottleProperty(recommendation, 'listing_url')}
-                  hasPrice={!!getBottleProperty(recommendation, 'avg_msrp')}
+                  url={getStringProp('listing_url')}
+                  hasPrice={hasProp('avg_msrp')}
                 />
               </div>
             )}

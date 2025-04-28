@@ -589,7 +589,7 @@ export async function enhanceRecommendations(
     for (const type of ['similar', 'diverse']) {
       console.log(
         `Before enhancement - ${type} structure:`,
-        recommendations[type]
+        recommendations[type] && Array.isArray(recommendations[type])
           ? `Found ${recommendations[type].length} items`
           : 'Not found'
       );
@@ -642,12 +642,17 @@ export async function enhanceRecommendations(
                     spirit_type:
                       details.spirit_type || item.spirit_type || item.type,
                     abv: details.abv ?? item.abv,
-                    proof: details.proof ?? item.proof,
+                    proof:
+                      typeof details.proof === 'string'
+                        ? parseFloat(details.proof)
+                        : (details.proof ?? item.proof),
                     avg_msrp: details.avg_msrp ?? item.avg_msrp,
                     fair_price: details.fair_price ?? item.fair_price,
                     shelf_price: details.shelf_price ?? item.shelf_price,
                     image_url: details.image_url || item.image_url,
-                    brand_id: details.brand_id ?? item.brand_id,
+                    brand_id: details.brand_id
+                      ? String(details.brand_id)
+                      : item.brand_id,
                     size: details.size ?? item.size,
                     // Add new values from API if not already present
                     region: details.region || item.region,
