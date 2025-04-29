@@ -431,6 +431,25 @@ footer a {
   @apply bg-primary text-primary-foreground;
 }
 
+/* Fix for dropdown menus and popovers */
+[data-radix-popper-content-wrapper] {
+  background-color: white !important;
+}
+
+.dark [data-radix-popper-content-wrapper] {
+  background-color: hsl(220 10% 17%) !important;
+}
+
+[data-radix-popper-content-wrapper] > div {
+  background-color: white !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark [data-radix-popper-content-wrapper] > div {
+  background-color: hsl(220 10% 17%) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
+}
+
 /* Responsive styles */
 @media (max-width: 640px) {
   h1 {

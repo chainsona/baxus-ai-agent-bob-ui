@@ -15,11 +15,11 @@ export const MessagesList = forwardRef<
 >(({ messages, isLoading }, ref) => {
   return (
     <ScrollArea
-      className="flex-1 p-4"
+      className="flex-1 p-2 md:p-4"
       style={{ backgroundColor: '#F8F6F1' }}
       ref={ref}
     >
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-3">
         {messages.map((message) => (
           <MessageBubble key={message.id} message={message} />
         ))}

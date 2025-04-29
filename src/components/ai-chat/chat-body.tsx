@@ -15,6 +15,7 @@ interface ChatBodyProps {
   showCloseButton?: boolean;
   scrollAreaRef: React.RefObject<HTMLDivElement | null>;
   clearConversation?: () => void;
+  inputRef?: React.RefObject<HTMLTextAreaElement | null>;
 }
 
 export function ChatBody({
@@ -28,6 +29,7 @@ export function ChatBody({
   showCloseButton,
   scrollAreaRef,
   clearConversation,
+  inputRef,
 }: ChatBodyProps) {
   return (
     <>
@@ -45,6 +47,7 @@ export function ChatBody({
       />
 
       <ChatInput
+        ref={inputRef}
         input={input}
         onChange={onInputChange}
         onSubmit={onSubmit}

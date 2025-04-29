@@ -22,7 +22,7 @@ export function ChatHeader({
   clearConversation,
 }: ChatHeaderProps) {
   return (
-    <div className="bg-[#1D6D72] border-b border-[#1D6D72]/20">
+    <div className="bg-primary border-b border-primary/20">
       {/* Main header row */}
       <div className="flex items-center justify-between px-3 py-2">
         <div className="flex items-center gap-1.5 overflow-hidden max-w-[70%]">
@@ -35,11 +35,11 @@ export function ChatHeader({
               className="w-full h-full object-cover"
             />
           </div>
-          <h3 className="font-medium text-sm text-white whitespace-nowrap">
+          <h3 className="font-medium text-sm text-primary-foreground whitespace-nowrap">
             Chat with BOB
           </h3>
           {username && (
-            <span className="ml-1 px-1.5 py-0.5 text-xs bg-white/20 text-white rounded-full truncate max-w-[100px]">
+            <span className="ml-1 px-1.5 py-0.5 text-xs bg-white/20 text-primary-foreground rounded-full truncate max-w-[100px]">
               @{username}
             </span>
           )}
@@ -54,7 +54,7 @@ export function ChatHeader({
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-7 w-7 p-0 text-white hover:bg-white/10"
+                  className="h-7 w-7 p-0 text-primary-foreground hover:bg-primary-foreground/10"
                 >
                   <MoreVertical className="h-4 w-4" />
                 </Button>
@@ -80,7 +80,7 @@ export function ChatHeader({
               variant="ghost"
               size="sm"
               onClick={onClose}
-              className="h-7 w-7 p-0 text-white hover:bg-white/10"
+              className="h-7 w-7 p-0 text-primary-foreground hover:bg-primary-foreground/10"
             >
               <X className="h-4 w-4" />
             </Button>

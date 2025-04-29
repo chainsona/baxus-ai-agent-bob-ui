@@ -16,6 +16,7 @@ export default function AiChat() {
   const { username } = useUser();
   const [messages, setMessages] = useState<Message[]>([]);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   // For responsive design - detect mobile
   const [isMobile, setIsMobile] = useState(false);
@@ -266,24 +267,14 @@ How can I help you today?`,
 
     setMessages((prev) => [...prev, userMessage]);
 
-    // Check for registration responses
-    const lowercaseInput = input.toLowerCase();
-    if (
-      lowercaseInput.includes('yes') ||
-      lowercaseInput.includes('sure') ||
-      lowercaseInput.includes('register') ||
-      lowercaseInput.includes('sign up')
-    ) {
-      // Handle registration intent
-      window.open(
-        `https://baxus.co/login?utm_source=baxus-bob.maikers.com&utm_medium=recommendation&utm_campaign=superteam-earn-chainsona`,
-        '_blank'
-      );
-    }
-
     // Create placeholder message and then process submission
     handleStreamStart();
     handleSubmit(e);
+
+    // Focus the input field after submitting
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 0);
   };
 
   const clearConversation = () => {
@@ -315,6 +306,7 @@ How can I help you today?`,
           onSubmit={onSubmit}
           scrollAreaRef={scrollAreaRef}
           clearConversation={clearConversation}
+          inputRef={inputRef}
         />
       ) : (
         <DesktopChat
@@ -328,6 +320,7 @@ How can I help you today?`,
           onSubmit={onSubmit}
           scrollAreaRef={scrollAreaRef}
           clearConversation={clearConversation}
+          inputRef={inputRef}
         />
       )}
     </>

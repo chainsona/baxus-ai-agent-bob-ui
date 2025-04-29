@@ -16,6 +16,7 @@ interface DesktopChatProps {
   onSubmit: (e: React.FormEvent) => void;
   scrollAreaRef: React.RefObject<HTMLDivElement | null>;
   clearConversation?: () => void;
+  inputRef?: React.RefObject<HTMLTextAreaElement | null>;
 }
 
 export function DesktopChat({
@@ -29,6 +30,7 @@ export function DesktopChat({
   onSubmit,
   scrollAreaRef,
   clearConversation,
+  inputRef,
 }: DesktopChatProps) {
   return (
     <>
@@ -64,6 +66,7 @@ export function DesktopChat({
           onClose={toggleChat}
           scrollAreaRef={scrollAreaRef}
           clearConversation={clearConversation}
+          inputRef={inputRef}
         />
       </div>
     </>

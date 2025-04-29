@@ -22,6 +22,7 @@ interface MobileChatProps {
   onSubmit: (e: React.FormEvent) => void;
   scrollAreaRef: React.RefObject<HTMLDivElement | null>;
   clearConversation?: () => void;
+  inputRef?: React.RefObject<HTMLTextAreaElement | null>;
 }
 
 export function MobileChat({
@@ -35,6 +36,7 @@ export function MobileChat({
   onSubmit,
   scrollAreaRef,
   clearConversation,
+  inputRef,
 }: MobileChatProps) {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -50,13 +52,13 @@ export function MobileChat({
       </SheetTrigger>
       <SheetContent
         side="bottom"
-        className="border-t border-border rounded-t-2xl p-0 h-[90vh] flex flex-col"
+        className="border-t border-border rounded-t-2xl p-0 max-h-[85vh] h-auto overflow-hidden flex flex-col"
         style={{ backgroundColor: '#F8F6F1' }}
       >
         <SheetHeader className="sr-only">
           <SheetTitle>Chat with BOB</SheetTitle>
         </SheetHeader>
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full overflow-y-auto">
           <ChatBody
             messages={messages}
             input={input}
@@ -67,6 +69,7 @@ export function MobileChat({
             scrollAreaRef={scrollAreaRef}
             showCloseButton={false}
             clearConversation={clearConversation}
+            inputRef={inputRef}
           />
         </div>
       </SheetContent>
