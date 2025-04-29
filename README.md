@@ -2,21 +2,13 @@
 
 BOB is an AI agent designed for the BAXUS ecosystem that analyzes users' virtual whisky bars to provide personalized bottle recommendations for their wishlists.
 
-## 🚀 Live Prototype
+## 📺 Live Demo
 
 [Try the BOB AI prototype](https://baxus-bob.maikers.com)
 
-## 📺 Demo Video
-
-Watch a demonstration of BOB providing personalized recommendations based on real user collections:
-
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=DEMO_VIDEO_ID">
-    <img src="./screenshot.png" alt="BOB AI Demo Video" style="width:600px;">
-  </a>
+   <img src="./screenshot.jpeg" alt="BOB AI Demo Video" style="width:600px;">
 </div>
-
-> **Note:** Replace `DEMO_VIDEO_ID` with the actual YouTube video ID when the demo is published.
 
 ## Features
 
