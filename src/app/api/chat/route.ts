@@ -4,10 +4,13 @@ export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
   try {
-    const { prompt, conversationHistory, userContext } = await req.json();
-    const shouldStream = true; // Enable streaming by default for better UX
+    const requestData = await req.json();
+    const { prompt, conversationHistory, userContext } = requestData;
 
-    console.log('Received request:', { prompt, conversationHistory });
+    console.log('Received full request:', JSON.stringify(requestData, null, 2));
+    console.log('Conversation history received:', conversationHistory);
+
+    const shouldStream = true; // Enable streaming by default for better UX
 
     // Forward the request to external API
     const apiUrl = process.env.API_URL || '';
@@ -21,7 +24,9 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         message: prompt,
         username: userContext?.username || null,
-        conversation_history: conversationHistory || [],
+        conversation_history: Array.isArray(conversationHistory)
+          ? conversationHistory
+          : [],
         stream: shouldStream,
       }),
     });
@@ -61,7 +66,6 @@ export async function POST(req: NextRequest) {
       try {
         // Read the entire response as text
         const responseText = await response.text();
-        console.log('Full response text:', responseText);
 
         // Parse the SSE stream to extract content
         const lines = responseText.split('\n');

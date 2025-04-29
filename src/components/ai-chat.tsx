@@ -14,19 +14,7 @@ const generateUniqueId = () =>
 export default function AiChat() {
   const [isOpen, setIsOpen] = useState(false);
   const { username } = useUser();
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      content: username
-        ? `Hello, **${username}**! 👋 I am BOB, your whisky expert. How can I help you today?`
-        : `Hello! 👋 I am BOB, your whisky expert.
-
- I noticed you're not registered with BoozApp yet. For personalized whisky recommendations, please create an account.
-
-How can I help you today?`,
-      role: 'assistant',
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   // For responsive design - detect mobile
@@ -38,6 +26,55 @@ How can I help you today?`,
   const lastInputRef = useRef<string>('');
   const streamingMessageIdRef = useRef<string | null>(null);
   const isStreamingRef = useRef<boolean>(false);
+
+  // Load conversation history from localStorage on component mount
+  useEffect(() => {
+    const loadConversationHistory = () => {
+      const storageKey = username
+        ? `chatHistory-${username}`
+        : 'chatHistory-guest';
+      const savedHistory = localStorage.getItem(storageKey);
+
+      if (savedHistory) {
+        try {
+          const parsedHistory = JSON.parse(savedHistory) as Message[];
+          if (Array.isArray(parsedHistory) && parsedHistory.length > 0) {
+            setMessages(parsedHistory);
+            return;
+          }
+        } catch (error) {
+          console.error('Failed to parse chat history:', error);
+        }
+      }
+
+      // Set default welcome message if no history exists
+      setMessages([
+        {
+          id: '1',
+          content: username
+            ? `Hello, **${username}**! 👋 I am BOB, your whisky expert. How can I help you today?`
+            : `Hello! 👋 I am BOB, your whisky expert.
+
+ I noticed you're not registered with BoozApp yet. For personalized whisky recommendations, please create an account.
+
+How can I help you today?`,
+          role: 'assistant',
+        },
+      ]);
+    };
+
+    loadConversationHistory();
+  }, [username]);
+
+  // Save conversation history to localStorage whenever messages change
+  useEffect(() => {
+    if (messages.length > 0) {
+      const storageKey = username
+        ? `chatHistory-${username}`
+        : 'chatHistory-guest';
+      localStorage.setItem(storageKey, JSON.stringify(messages));
+    }
+  }, [messages, username]);
 
   useEffect(() => {
     // Check if we're on mobile
@@ -77,18 +114,22 @@ How can I help you today?`,
   } = useCompletion({
     api: `/api/chat`,
     streamProtocol: 'text',
-    body: (input: string) => ({
-      prompt: input,
-      conversationHistory: messages.map(({ content, role }) => ({
-        content,
-        role,
-      })),
-      // Pass user context to the API
-      userContext: {
-        username: username || undefined,
-        isRegistered: !!username,
+    body: {
+      get prompt() {
+        return input;
       },
-    }),
+      get conversationHistory() {
+        return messages.map(({ content, role }) => ({
+          content,
+          role,
+        }));
+      },
+      get userContext() {
+        return {
+          username: username || undefined,
+        };
+      },
+    },
     onResponse: (response) => {
       console.log('API Response Status:', response.status);
       if (!response.ok) {
@@ -245,6 +286,21 @@ How can I help you today?`,
     handleSubmit(e);
   };
 
+  const clearConversation = () => {
+    const welcomeMessage: Message = {
+      id: generateUniqueId(),
+      content: username
+        ? `Hello, **${username}**! 👋 I am BOB, your whisky expert. How can I help you today?`
+        : `Hello! 👋 I am BOB, your whisky expert.
+
+ I noticed you're not registered with BoozApp yet. For personalized whisky recommendations, please create an account.
+
+How can I help you today?`,
+      role: 'assistant',
+    };
+    setMessages([welcomeMessage]);
+  };
+
   return (
     <>
       {isMobile ? (
@@ -258,6 +314,7 @@ How can I help you today?`,
           onInputChange={handleInputChange}
           onSubmit={onSubmit}
           scrollAreaRef={scrollAreaRef}
+          clearConversation={clearConversation}
         />
       ) : (
         <DesktopChat
@@ -270,6 +327,7 @@ How can I help you today?`,
           onInputChange={handleInputChange}
           onSubmit={onSubmit}
           scrollAreaRef={scrollAreaRef}
+          clearConversation={clearConversation}
         />
       )}
     </>

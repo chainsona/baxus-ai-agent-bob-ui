@@ -1,17 +1,19 @@
 import { Button } from '@/components/ui/button';
-import { X } from 'lucide-react';
+import { X, Trash2 } from 'lucide-react';
 import Image from 'next/image';
 
 interface ChatHeaderProps {
   username?: string | null;
   onClose?: () => void;
   showCloseButton?: boolean;
+  clearConversation?: () => void;
 }
 
 export function ChatHeader({
   username,
   onClose,
   showCloseButton = true,
+  clearConversation,
 }: ChatHeaderProps) {
   return (
     <div className="flex items-center justify-between px-4 py-3 bg-white border-b border-neutral-200">
@@ -32,8 +34,19 @@ export function ChatHeader({
           </span>
         )}
       </div>
-      {showCloseButton && onClose && (
-        <div className="flex gap-1">
+      <div className="flex gap-1">
+        {clearConversation && (
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={clearConversation}
+            className="h-7 w-7 text-neutral-500 hover:bg-neutral-100"
+            title="Clear conversation"
+          >
+            <Trash2 className="h-4 w-4" />
+          </Button>
+        )}
+        {showCloseButton && onClose && (
           <Button
             variant="ghost"
             size="icon"
@@ -42,8 +55,8 @@ export function ChatHeader({
           >
             <X className="h-5 w-5" />
           </Button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

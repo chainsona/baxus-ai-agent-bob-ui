@@ -21,6 +21,7 @@ interface MobileChatProps {
   onInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onSubmit: (e: React.FormEvent) => void;
   scrollAreaRef: React.RefObject<HTMLDivElement | null>;
+  clearConversation?: () => void;
 }
 
 export function MobileChat({
@@ -33,6 +34,7 @@ export function MobileChat({
   onInputChange,
   onSubmit,
   scrollAreaRef,
+  clearConversation,
 }: MobileChatProps) {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -64,6 +66,7 @@ export function MobileChat({
             onSubmit={onSubmit}
             scrollAreaRef={scrollAreaRef}
             showCloseButton={false}
+            clearConversation={clearConversation}
           />
         </div>
       </SheetContent>

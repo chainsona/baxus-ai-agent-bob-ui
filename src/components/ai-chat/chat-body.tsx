@@ -14,6 +14,7 @@ interface ChatBodyProps {
   onClose?: () => void;
   showCloseButton?: boolean;
   scrollAreaRef: React.RefObject<HTMLDivElement | null>;
+  clearConversation?: () => void;
 }
 
 export function ChatBody({
@@ -26,6 +27,7 @@ export function ChatBody({
   onClose,
   showCloseButton,
   scrollAreaRef,
+  clearConversation,
 }: ChatBodyProps) {
   return (
     <>
@@ -33,6 +35,7 @@ export function ChatBody({
         username={username}
         onClose={onClose}
         showCloseButton={showCloseButton}
+        clearConversation={clearConversation}
       />
 
       <MessagesList
