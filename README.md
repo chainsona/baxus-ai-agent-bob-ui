@@ -10,6 +10,26 @@ BOB is an AI agent designed for the BAXUS ecosystem that analyzes users' virtual
    <img src="./screenshot.jpeg" alt="BOB AI Demo Video" style="width:600px;">
 </div>
 
+## 🤖 Agent Repository
+
+For the backend API that powers this UI, visit the [BAXUS BOB AI Agent repository](https://github.com/chainsona/baxus-ai-agent-bob).
+
+The API provides:
+
+- 🧠 Recommendation engine for personalized whisky suggestions
+- 🔍 Collection analysis algorithms
+- 💬 AI chat capabilities
+
+## 🚀 Deployment
+
+This application is deployed using Kubernetes. Configuration files can be found in the `kubernetes/` directory:
+
+- `deployment.yaml` - Defines the deployment configuration
+- `service.yaml` - Exposes the application as a network service
+- `configmap.yaml` - Contains environment-specific configuration
+- `ingress.yaml` - Manages external access to the service
+- `kustomization.yaml` - Customizes Kubernetes resources
+
 ## Features
 
 - 🔍 **Collection Analysis**: Analyzes existing bar data to identify patterns in user preferences (styles, price points, etc.)
@@ -41,8 +61,8 @@ BOB is an AI agent designed for the BAXUS ecosystem that analyzes users' virtual
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/MaikersHQ/baxus-ai-agent-BOB.git
-   cd baxus-ai-agent-BOB
+   git clone https://github.com/chainsona/baxus-ai-agent-bob-ui.git
+   cd baxus-ai-agent-bob-ui
    ```
 
 2. Install dependencies:
