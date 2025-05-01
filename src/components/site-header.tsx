@@ -48,10 +48,10 @@ export default function SiteHeader() {
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center">
             <span className="text-xl font-bold tracking-tight text-foreground">
-              B A <span className="text-primary">X</span> U S
+              B A <span className="text-primary">X</span> A T H O N
             </span>
             <span className="ml-2 px-2 py-1 bg-primary/10 border border-primary/20 rounded text-xs font-medium text-primary">
-              BOB
+              BOB AI
             </span>
           </Link>
         </div>
@@ -106,8 +106,7 @@ export default function SiteHeader() {
               </SheetTrigger>
               <SheetContent
                 side="bottom"
-                className="border-t border-border rounded-t-2xl pt-6 pb-8 h-[80vh] overflow-y-auto"
-                style={{ backgroundColor: 'var(--baxus-background, #F8F6F1)' }}
+                className="border-t border-border rounded-t-2xl pt-6 pb-8 h-[80vh] overflow-y-auto bg-background"
               >
                 <SheetHeader className="sr-only">
                   <SheetTitle>Navigation Menu</SheetTitle>
@@ -120,10 +119,10 @@ export default function SiteHeader() {
                     onClick={() => setOpen(false)}
                   >
                     <span className="text-2xl font-bold tracking-tight text-foreground">
-                      B A <span className="text-primary">X</span> U S
+                      B A <span className="text-primary">X</span> A T H O N
                     </span>
                     <span className="ml-2 px-2 py-1 bg-primary/10 border border-primary/20 rounded text-xs font-medium text-primary">
-                      BOB
+                      BOB AI
                     </span>
                   </Link>
 
