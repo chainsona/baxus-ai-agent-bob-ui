@@ -50,5 +50,5 @@ Create an AI agent named "BOB" whose main job analyzes users' virtual bars withi
 -Download BoozApp and add bottles to your bar
 
 - Retrieving your bar data via this endpoint:
-  - `curl -X GET "http://services.baxus.co/api/bar/user/carriebaxus" -H "Content-Type: application/json"`
+  - `curl -X GET "http://services.baxus.co/api/bar/user/heisjoel0x" -H "Content-Type: application/json"`
 - Dataset of 501 bottles to use as the recommendation pool: `data/501 Bottle Dataset - Sheet1.csv`

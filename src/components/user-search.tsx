@@ -56,11 +56,11 @@ export function UserSearch({ onSearch, isLoading }: UserSearchProps) {
         <p className="mt-2 sm:mt-3 text-center text-[10px] sm:text-xs text-muted-foreground dark:text-white/70">
           Try with{' '}
           <button
-            onClick={() => onSearch('carriebaxus')}
+            onClick={() => onSearch('heisjoel0x')}
             className="text-primary underline hover:no-underline focus:outline-none focus:ring-0"
             disabled={isLoading}
           >
-            carriebaxus
+            heisjoel0x
           </button>{' '}
           for a sample collection
         </p>
